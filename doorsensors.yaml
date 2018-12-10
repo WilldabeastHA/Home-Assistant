@@ -38,7 +38,7 @@ binary_sensor: #Put this in binary_sensor.yaml
     retain: false
     
 automations:   #put this in automations.yaml
-#the master bedroom door does not make a sound when the door opens. The automations are for turning on a fan or sound machine in the various rooms are done in Node_Red
+#the master bedroom door does not make a sound when the door opens. The automations for turning on a fan or sound machine in the various rooms are done in Node_Red
   - alias: door boys
     trigger:
       - entity_id: binary_sensor.boys_bedroom_door

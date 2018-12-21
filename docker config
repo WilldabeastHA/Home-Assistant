@@ -1,0 +1,27 @@
+#--------------------HASS--------------------#
+--name="hass" \
+--restart on-failure \
+--net=host \
+-v /home/hass/hass_config:/config \
+-e "TZ=America/Detroit" \
+-p 8123:8123 \
+homeassistant/home-assistant
+
+#--------------------Unifi--------------------#
+sudo docker volume create unifi_data
+
+sudo docker run \
+--name=unifi \
+--restart on-failure \
+-e PGID=1000 -e PUID=1000 \
+-p 3478:3478/udp \
+-p 10001:10001/udp \
+-p 8080:8080 \
+-p 8081:8081 \
+-p 8443:8443 \
+-p 8843:8843 \
+-p 8880:8880 \
+-p 6789:6789 \
+-v unifi_data:/data \
+-v unifi_data:/config \
+linuxserver/unifi
